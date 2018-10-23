@@ -1,36 +1,47 @@
 package io.pivotal.pal.tracker;
 
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-public class InMemoryTimeEntryRepository implements TimeEntryRepository{
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+public class InMemoryTimeEntryRepository implements TimeEntryRepository {
+
+    private final Map<Long, TimeEntry> repository = new HashMap<>();
+
+    @Override
     public TimeEntry create(TimeEntry timeEntry) {
-        return null;
+        Long id = repository.values().size() + 1L;
+        timeEntry.setId(id);
+        repository.put(timeEntry.getId(), timeEntry);
+        return timeEntry;
     }
 
     @Override
-    public TimeEntry find(long l) {
-
-        return null;
-    }
-
     public TimeEntry find(Long id) {
-        return null;
+        return repository.get(id);
     }
 
     @Override
     public List<TimeEntry> list() {
-        return null;
+        List<TimeEntry> timeEntries = new ArrayList<>();
+        timeEntries.addAll(repository.values());
+        return timeEntries;
     }
 
     @Override
-    public TimeEntry update(long eq, TimeEntry any) {
-        return null;
+    public TimeEntry update(long id, TimeEntry timeEntry) {
+        if (repository.containsKey(id)) {
+            timeEntry.setId(id);
+            repository.put(id, timeEntry);
+        }
+        return timeEntry;
     }
 
     @Override
-    public TimeEntry delete(long l) {
-        return null;
+    public void delete(long id) {
+        repository.remove(id);
     }
 }
