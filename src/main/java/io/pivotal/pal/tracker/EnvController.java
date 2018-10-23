@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Value;
 import java.util.HashMap;
 import java.util.Map;
 
-/// This file is env controller.
+/// This file is env controller for controller parameters
+
 
 @RestController
 public class EnvController {
