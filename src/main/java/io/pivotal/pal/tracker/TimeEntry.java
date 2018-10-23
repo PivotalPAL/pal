@@ -8,4 +8,16 @@ public class TimeEntry {
     private long userId;
     private LocalDate date;
     private int hours;
+
+    public TimeEntry(long l, long l1, LocalDate parse, int i) {
+
+    }
+
+    public TimeEntry(long l, long l1, long l2, LocalDate parse, int i) {
+
+    }
+
+    public TimeEntry() {
+
+    }
 }
