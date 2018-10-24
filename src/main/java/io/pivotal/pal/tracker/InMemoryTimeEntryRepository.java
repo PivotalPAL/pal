@@ -20,7 +20,7 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
     }
 
     @Override
-    public TimeEntry find(Long id) {
+    public TimeEntry find(long id) {
         return repository.get(id);
     }
 
